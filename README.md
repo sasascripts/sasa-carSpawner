@@ -16,7 +16,7 @@ FiveM car spawner script using **ox_lib**.
 3. Make sure **ox_lib** is installed and running.  
 
 ## 📜 Usage
-- Use `/car [vehicle_name]` to spawn a vehicle.  
+- Use `/carmenu` for open menu
 - Requires **admin permissions**.  
 
 ## ⚖️ License
