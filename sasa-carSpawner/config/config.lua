@@ -7,7 +7,7 @@ Config = {}
 --██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
 --╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 
-Config.Version = "1.1.2" -- Dont change this!
+Config.Version = "1.1.3" -- Dont change this!
 Config.Locale = "en" -- en, cs, de, fr, es | Select language
 Config.FrameWork = "esx" -- esx, qbcore | Select your framework
 Config.AdminGroups = {"owner", "superadmin", "admin", "mod"} -- false/table | if false = the car menu can open everyone
@@ -32,6 +32,15 @@ Config.QuickSpawnCars = {  -- table | These cars will be showed in Quick Spawn
     }
 }
 
+--██████╗ ██╗███╗   ██╗██████╗ ██╗███╗   ██╗ ██████╗ ███████╗
+--██╔══██╗██║████╗  ██║██╔══██╗██║████╗  ██║██╔════╝ ██╔════╝
+--██████╔╝██║██╔██╗ ██║██║  ██║██║██╔██╗ ██║██║  ███╗███████╗
+--██╔══██╗██║██║╚██╗██║██║  ██║██║██║╚██╗██║██║   ██║╚════██║
+--██████╔╝██║██║ ╚████║██████╔╝██║██║ ╚████║╚██████╔╝███████║
+--╚═════╝ ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+Config.EnableBindings = true -- true/false | True makes enable bindings by default keybinds
+Config.CarMenuOpenDefaultBIND = "L"
+
 --██╗      ██████╗  ██████╗ █████╗ ██╗     ███████╗███████╗
 --██║     ██╔═══██╗██╔════╝██╔══██╗██║     ██╔════╝██╔════╝
 --██║     ██║   ██║██║     ███████║██║     █████╗  ███████╗
@@ -54,7 +63,8 @@ Config.Locales = {
         menuTitle = "Car Spawner Menu",
         carSpawned = "Car has been successfully spawned!",
         carDeleted = "Car has been successfully deleted!",
-        noCarToDelete = "There is no car to delete!"
+        noCarToDelete = "There is no car to delete!",
+        CarMenuBIND = "Open Car Menu",
     },
     cs = {
         notAuthorized = "Nemáte oprávnění k provedení této akce.",
@@ -70,7 +80,8 @@ Config.Locales = {
         menuTitle = "Menu spawneru aut",
         carSpawned = "Auto bylo úspěšně spawnuto!",
         carDeleted = "Auto bylo úspěšně smazáno!",
-        noCarToDelete = "Není žádné auto k smazání!"
+        noCarToDelete = "Není žádné auto k smazání!",
+        CarMenuBIND = "Otevřít Car Menu",
     },
     de = {
         notAuthorized = "Sie sind nicht berechtigt, diese Aktion auszuführen.",
@@ -86,7 +97,8 @@ Config.Locales = {
         menuTitle = "Auto-Spawner Menü",
         carSpawned = "Auto wurde erfolgreich gespawnt!",
         carDeleted = "Auto wurde erfolgreich gelöscht!",
-        noCarToDelete = "Es gibt kein Auto zum Löschen!"
+        noCarToDelete = "Es gibt kein Auto zum Löschen!",
+        CarMenuBIND = "Automenü öffnen",
     },
     fr = {
         notAuthorized = "Vous n'êtes pas autorisé à effectuer cette action.",
@@ -102,7 +114,8 @@ Config.Locales = {
         menuTitle = "Menu du spawner de voitures",
         carSpawned = "La voiture a été spawnée avec succès !",
         carDeleted = "La voiture a été supprimée avec succès !",
-        noCarToDelete = "Il n'y a pas de voiture à supprimer !"
+        noCarToDelete = "Il n'y a pas de voiture à supprimer !",
+        CarMenuBIND = "Ouvrir le menu de la voiture",
     },
     es = {
         notAuthorized = "No estás autorizado para realizar esta acción.",
@@ -118,6 +131,7 @@ Config.Locales = {
         menuTitle = "Menú de spawner de coches",
         carSpawned = "¡Coche ha sido spawnado exitosamente!",
         carDeleted = "¡Coche ha sido eliminado exitosamente!",
-        noCarToDelete = "¡No hay coche para eliminar!"
+        noCarToDelete = "¡No hay coche para eliminar!",
+        CarMenuBIND = "Abrir menú del coche",
     }
 }

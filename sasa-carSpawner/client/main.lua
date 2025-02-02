@@ -179,3 +179,7 @@ RegisterCommand('carmenu', function()
 
     SetupMenu()
 end, false)
+
+if Config.EnableBindings == true then
+RegisterKeyMapping('carmenu', Config.Locales[Config.Locale].CarMenuBIND, 'keyboard', Config.CarMenuOpenDefaultBIND)
+end
