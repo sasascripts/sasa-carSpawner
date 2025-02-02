@@ -7,7 +7,7 @@ Config = {}
 --██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
 --╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 
-Config.Version = "1.0" -- Dont change this!
+Config.Version = "1.2" -- Dont change this!
 Config.Locale = "en" -- en, cs, de, fr, es | Select language
 Config.FrameWork = "esx" -- esx, qbcore | Select your framework
 Config.AdminGroups = {"owner", "superadmin", "admin", "mod"} -- false/table | if false = the car menu can open everyone
