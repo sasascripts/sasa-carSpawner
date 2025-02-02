@@ -19,6 +19,9 @@ FiveM car spawner script using **ox_lib**.
 - Use `/carmenu` for open menu
 - Requires **admin permissions**.  
 
+## 😉 Support
+If you need a support, message me on discord "sasinek191" or join our discord [HERE](https://discord.gg/9zdQYqP5gc)
+
 ## ⚖️ License
 This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**.  
 You are free to **modify and share** this script, but you **cannot claim it as your own** or release it under a different license.  
