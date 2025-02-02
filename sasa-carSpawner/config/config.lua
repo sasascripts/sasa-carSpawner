@@ -7,11 +7,12 @@ Config = {}
 --██║ ╚═╝ ██║██║  ██║██║██║ ╚████║
 --╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
 
-Config.Version = "1.2" -- Dont change this!
+Config.Version = "1.1.2" -- Dont change this!
 Config.Locale = "en" -- en, cs, de, fr, es | Select language
 Config.FrameWork = "esx" -- esx, qbcore | Select your framework
 Config.AdminGroups = {"owner", "superadmin", "admin", "mod"} -- false/table | if false = the car menu can open everyone
 Config.SpawnCarWithEngineON = true -- true/false | True makes the vehicle after spawn will be got engine ON
+Config.DeletePreviousVehicleAfterSpawnNew = true -- true/false | True makes delete previous veh after spawn new
 Config.EnableQuickSpawnCars = true -- true/false | true makes enabled and false makes disabled
 Config.QuickSpawnCars = {  -- table | These cars will be showed in Quick Spawn
     { 
