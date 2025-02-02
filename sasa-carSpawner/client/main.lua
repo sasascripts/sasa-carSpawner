@@ -15,41 +15,46 @@ function OpenModelInput()
 end
 
 function SpawnCarByModel(carModel)
-    if Config.FrameWork == "esx" then
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        local heading = GetEntityHeading(playerPed)
+    local playerPed = PlayerPedId()
+    local coords = GetEntityCoords(playerPed)
+    local heading = GetEntityHeading(playerPed)
+    local oldVehicle = GetVehiclePedIsIn(playerPed, false)
 
-        ESX.Game.SpawnVehicle(carModel, coords, heading, function(vehicle)
-            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+    if oldVehicle ~= 0 then
+        if Config.DeletePreviousVehicleAfterSpawnNew then
+            SetEntityAsMissionEntity(oldVehicle, true, true)
+            DeleteVehicle(oldVehicle)
+        else
+            local backOffset = GetOffsetFromEntityInWorldCoords(oldVehicle, -4.0, 0.0, 0.3)
+            SetEntityCoordsNoOffset(oldVehicle, backOffset.x, backOffset.y, backOffset.z, false, false, false)
+            SetVehicleOnGroundProperly(oldVehicle)
+        end
+    end
+
+    if Config.FrameWork == "esx" then
+        ESX.Game.SpawnVehicle(carModel, coords, heading, function(newVehicle)
+            TaskWarpPedIntoVehicle(playerPed, newVehicle, -1)
 
             if Config.SpawnCarWithEngineON then
-                SetVehicleEngineOn(vehicle, true, true, false)
+                SetVehicleEngineOn(newVehicle, true, true, false)
             end
 
-            -- Notifikace o úspěchu
             Notify(Config.Locales[Config.Locale].carSpawned, "", "success")
         end)
     elseif Config.FrameWork == "qbcore" then
         local QBCore = exports['qb-core']:GetCoreObject()
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        local heading = GetEntityHeading(playerPed)
-
-        QBCore.Functions.SpawnVehicle(carModel, function(vehicle)
-            SetEntityCoords(vehicle, coords.x, coords.y, coords.z, false, false, false, false)
-            SetEntityHeading(vehicle, heading)
-            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+        QBCore.Functions.SpawnVehicle(carModel, function(newVehicle)
+            SetEntityCoordsNoOffset(newVehicle, coords.x, coords.y, coords.z, false, false, false)
+            SetEntityHeading(newVehicle, heading)
+            TaskWarpPedIntoVehicle(playerPed, newVehicle, -1)
 
             if Config.SpawnCarWithEngineON then
-                SetVehicleEngineOn(vehicle, true, true, false)
+                SetVehicleEngineOn(newVehicle, true, true, false)
             end
 
-            -- Notifikace o úspěchu
             Notify(Config.Locales[Config.Locale].carSpawned, "", "success")
         end, coords, true)
     else
-        -- Notifikace o chybě
         Notify(Config.Locales[Config.Locale].unknownFramework, "", "error")
     end
 end
@@ -62,14 +67,11 @@ function DeleteCar()
         SetEntityAsMissionEntity(vehicle, true, true)
         DeleteVehicle(vehicle)
 
-        -- Notifikace o úspěšném smazání
         Notify(Config.Locales[Config.Locale].carDeleted, "", "success")
     else
-        -- Notifikace o chybě (pokud není žádné vozidlo)
         Notify(Config.Locales[Config.Locale].noCarToDelete, "", "error")
     end
 end
-
 
 RegisterNetEvent("sasa-carSpawner:DeleteCar")
 AddEventHandler("sasa-carSpawner:DeleteCar", function()
@@ -82,31 +84,39 @@ AddEventHandler("sasa-carSpawner:SpawnCarByModel", function()
 end)
 
 function SpawnCar(carModel)
-    if Config.FrameWork == "esx" then
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        local heading = GetEntityHeading(playerPed)
+    local playerPed = PlayerPedId()
+    local coords = GetEntityCoords(playerPed)
+    local heading = GetEntityHeading(playerPed)
+    local oldVehicle = GetVehiclePedIsIn(playerPed, false)
 
-        ESX.Game.SpawnVehicle(carModel, coords, heading, function(vehicle)
-            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+    if oldVehicle ~= 0 then
+        if Config.DeletePreviousVehicleAfterSpawnNew then
+            SetEntityAsMissionEntity(oldVehicle, true, true)
+            DeleteVehicle(oldVehicle)
+        else
+            local backOffset = GetOffsetFromEntityInWorldCoords(oldVehicle, -4.0, 0.0, 0.3)
+            SetEntityCoordsNoOffset(oldVehicle, backOffset.x, backOffset.y, backOffset.z, false, false, false)
+            SetVehicleOnGroundProperly(oldVehicle)
+        end
+    end
+
+    if Config.FrameWork == "esx" then
+        ESX.Game.SpawnVehicle(carModel, coords, heading, function(newVehicle)
+            TaskWarpPedIntoVehicle(playerPed, newVehicle, -1)
 
             if Config.SpawnCarWithEngineON then
-                SetVehicleEngineOn(vehicle, true, true, false)
+                SetVehicleEngineOn(newVehicle, true, true, false)
             end
         end)
     elseif Config.FrameWork == "qbcore" then
         local QBCore = exports['qb-core']:GetCoreObject()
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        local heading = GetEntityHeading(playerPed)
-
-        QBCore.Functions.SpawnVehicle(carModel, function(vehicle)
-            SetEntityCoords(vehicle, coords.x, coords.y, coords.z, false, false, false, false)
-            SetEntityHeading(vehicle, heading)
-            TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
+        QBCore.Functions.SpawnVehicle(carModel, function(newVehicle)
+            SetEntityCoordsNoOffset(newVehicle, coords.x, coords.y, coords.z, false, false, false)
+            SetEntityHeading(newVehicle, heading)
+            TaskWarpPedIntoVehicle(playerPed, newVehicle, -1)
 
             if Config.SpawnCarWithEngineON then
-                SetVehicleEngineOn(vehicle, true, true, false)
+                SetVehicleEngineOn(newVehicle, true, true, false)
             end
         end, coords, true)
     else
